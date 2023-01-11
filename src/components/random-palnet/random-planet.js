@@ -5,30 +5,24 @@ import SwapiService from "../../services/swapi-service";
 class RandomPlanet extends React.Component {
   swapiService = new SwapiService();
   state = {
-    id: null,
-    name: null,
-    population: null,
-    rotationPeriod: null,
-    diametr: null,
+    planet: {},
   };
   constructor() {
     super();
     this.updatePlanet();
   }
+
+  onPlanetLoaded = (planet) => {
+    this.setState({ planet });
+  };
   updatePlanet() {
-    const id = Math.floor(Math.random()*25)+2;
-    this.swapiService.getPlanet(id).then((planet) => {
-      this.setState({
-        id,
-        name: planet.name,
-        population: planet.population,
-        rotationPeriod: planet.rotation_period,
-        diametr: planet.diametr,
-      });
-    });
+    const id = Math.floor(Math.random() * 19) + 2;
+    this.swapiService.getPlanet(id).then(this.onPlanetLoaded);
   }
   render() {
-    const { name, population, rotationPeriod, diametr, id } = this.state;
+    const {
+      planet: { name, population, rotationPeriod, diameter, id },
+    } = this.state;
     return (
       <div className="random-planet jumbotron rounded">
         <img
@@ -48,7 +42,7 @@ class RandomPlanet extends React.Component {
             </li>
             <li className="list-group-item">
               <span className="term">Diameter</span>
-              <span>{diametr}</span>
+              <span>{diameter}</span>
             </li>
           </ul>
         </div>
