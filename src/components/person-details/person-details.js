@@ -1,5 +1,6 @@
 import React from "react";
 import SwapiService from "../../services/swapi-service";
+import ErrorButton from "../error-button/error-button";
 import Spinner from "../spinner";
 import "./person-details.css";
 
@@ -32,10 +33,10 @@ class PersonDetails extends React.Component {
 
   render() {
     if (!this.state.person) {
-      return <Spinner/>
+      return <Spinner />;
     }
-    
-    const {id, name, gender, birthYear, eyeColor} = this.state.person
+
+    const { id, name, gender, birthYear, eyeColor } = this.state.person;
     return (
       <div className="person-details card">
         <img
@@ -59,6 +60,7 @@ class PersonDetails extends React.Component {
               <span>{eyeColor}</span>
             </li>
           </ul>
+          <ErrorButton />
         </div>
       </div>
     );
