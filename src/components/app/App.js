@@ -7,7 +7,7 @@ import RandomPlanet from "../random-palnet";
 
 class App extends React.Component {
   state = {
-    selectedPerson: null,
+    selectedPerson: 1,
   };
   onItemSelected = (id) => {
     this.setState({ selectedPerson: id });
@@ -22,7 +22,7 @@ class App extends React.Component {
             <ItemList onItemSelected={this.onItemSelected}/>
           </div>
           <div className="col-md-6">
-            <PersonDetails />
+            <PersonDetails personId = {this.state.selectedPerson}/>
           </div>
         </div>
       </div>
