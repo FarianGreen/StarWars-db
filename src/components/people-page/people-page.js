@@ -3,9 +3,9 @@ import SwapiService from "../../services/swapi-service";
 import ErrorBoundry from "../error-boundry/error-boundry";
 import ErrorIndicator from "../error-indicator";
 import ItemList from "../item-list";
-import PersonDetails from "../person-details";
 import Row from "../row";
 import "./people-page.css";
+import ItemDetails from "../item-details";
 
 class PeoplePage extends React.Component {
   swapiService = new SwapiService();
@@ -38,12 +38,12 @@ class PeoplePage extends React.Component {
       </ErrorBoundry>
     );
 
-    const personDetails = (
+    const itemDetails = (
       <ErrorBoundry>
-        <PersonDetails personId={this.state.selectedPerson} />
+        <ItemDetails itemId={this.state.selectedPerson} />
       </ErrorBoundry>
     );
-    return <Row left={itemList} right={personDetails} />;
+    return <Row left={itemList} right={itemDetails} />;
   }
 }
 export default PeoplePage;
