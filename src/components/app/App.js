@@ -2,12 +2,19 @@ import React from "react";
 import "./App.css";
 import Header from "../header";
 import RandomPlanet from "../random-palnet";
-import ErrorButton from "../error-button/error-button";
 import ErrorIndicator from "../error-indicator";
-import PeoplePage from "../people-page";
 import SwapiService from "../../services/swapi-service";
 import Row from "../row";
 import ItemDetails from "../item-details";
+
+import {
+  PersonDetails,
+  PlanetDetails,
+  StarshipDetails,
+  PersonList,
+  PlanetList,
+  StarshipList,
+} from "../sw-components";
 
 class App extends React.Component {
   swapiService = new SwapiService();
@@ -24,17 +31,30 @@ class App extends React.Component {
     if (this.state.hasError) {
       return <ErrorIndicator />;
     }
-    const personDetails = (
-      <ItemDetails getData={this.swapiService.getPerson} itemId={11} getImageUrl={this.swapiService.getPersonImage}/>
-    );
-    const starshipDetails = (
-      <ItemDetails getData={this.swapiService.getStarship} itemId={40} getImageUrl={this.swapiService.getStarshipImage}/>
-    );
+
+    const {
+      getPerson,
+      getStarship,
+      getPersonImage,
+      getStarshipImage,
+      getAllPeople,
+      getAllPlanet,
+    } = this.swapiService;
+
     return (
       <div className="App">
         <Header />
         <RandomPlanet />
-        <Row left={personDetails} right={starshipDetails} />
+
+        <PersonList>{({ name }) => <span>{name}</span>}</PersonList>
+
+        <StarshipList>{({ name }) => <span>{name}</span>}</StarshipList>
+
+        <PlanetList>{({ name }) => <span>{name}</span>}</PlanetList>
+
+        <PersonDetails itemId={11} />
+        <StarshipDetails itemId={11} />
+        <PlanetDetails itemId={11} />
       </div>
     );
   }
