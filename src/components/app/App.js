@@ -46,11 +46,11 @@ class App extends React.Component {
         <Header />
         <RandomPlanet />
 
-        <PersonList>{({ name }) => <span>{name}</span>}</PersonList>
+        <PersonList />
 
-        <StarshipList>{({ name }) => <span>{name}</span>}</StarshipList>
+        <StarshipList />
 
-        <PlanetList>{({ name }) => <span>{name}</span>}</PlanetList>
+        <PlanetList />
 
         <PersonDetails itemId={11} />
         <StarshipDetails itemId={11} />
