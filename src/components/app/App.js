@@ -5,15 +5,9 @@ import RandomPlanet from "../random-palnet";
 import ErrorIndicator from "../error-indicator";
 import SwapiService from "../../services/swapi-service";
 import { SwapiServiceProvider } from "../sw-components/swapi-service-context";
-
-import {
-  PersonDetails,
-  PlanetDetails,
-  StarshipDetails,
-  PersonList,
-  PlanetList,
-  StarshipList,
-} from "../sw-components";
+import PeoplePage from "../pages/people-page";
+import PlanetsPage from "../pages/planets-page";
+import StarshipsPage from "../pages/starships-page";
 
 class App extends React.Component {
   swapiService = new SwapiService();
@@ -31,30 +25,14 @@ class App extends React.Component {
       return <ErrorIndicator />;
     }
 
-    const {
-      getPerson,
-      getStarship,
-      getPersonImage,
-      getStarshipImage,
-      getAllPeople,
-      getAllPlanet,
-    } = this.swapiService;
-
     return (
       <div className="App">
         <SwapiServiceProvider value={this.swapiService}>
           <Header />
           <RandomPlanet />
-
-          <PersonList />
-
-          <StarshipList />
-
-          <PlanetList />
-
-          <PersonDetails itemId={11} />
-          <StarshipDetails itemId={11} />
-          <PlanetDetails itemId={11} />
+          <PeoplePage />
+          <PlanetsPage />
+          <StarshipsPage />
         </SwapiServiceProvider>
       </div>
     );

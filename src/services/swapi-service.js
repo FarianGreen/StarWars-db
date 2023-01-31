@@ -34,7 +34,7 @@ class SwapiService {
     return this._transformPlanet(planet);
   };
 
-  getAllStarsips = async () => {
+  getAllStarships = async () => {
     const response = await this.getResource(`/starships/`);
     return response.results.map(this._transformStarship);
   };
