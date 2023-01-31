@@ -4,8 +4,7 @@ import Header from "../header";
 import RandomPlanet from "../random-palnet";
 import ErrorIndicator from "../error-indicator";
 import SwapiService from "../../services/swapi-service";
-import Row from "../row";
-import ItemDetails from "../item-details";
+import { SwapiServiceProvider } from "../sw-components/swapi-service-context";
 
 import {
   PersonDetails,
@@ -43,18 +42,20 @@ class App extends React.Component {
 
     return (
       <div className="App">
-        <Header />
-        <RandomPlanet />
+        <SwapiServiceProvider value={this.swapiService}>
+          <Header />
+          <RandomPlanet />
 
-        <PersonList />
+          <PersonList />
 
-        <StarshipList />
+          <StarshipList />
 
-        <PlanetList />
+          <PlanetList />
 
-        <PersonDetails itemId={11} />
-        <StarshipDetails itemId={11} />
-        <PlanetDetails itemId={11} />
+          <PersonDetails itemId={11} />
+          <StarshipDetails itemId={11} />
+          <PlanetDetails itemId={11} />
+        </SwapiServiceProvider>
       </div>
     );
   }
