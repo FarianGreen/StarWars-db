@@ -1,10 +1,11 @@
 import React from "react";
+import ErrorBoundry from "../error-boundry/error-boundry";
 import Row from "../row";
 import { StarshipDetails, StarshipList } from "../sw-components";
 
 class StarshipsPage extends React.Component {
   state = {
-    selectedItem: null,
+    selectedItem: 9,
   };
 
   onItemSelected = (selectedItem) => {
@@ -15,10 +16,12 @@ class StarshipsPage extends React.Component {
     const { selectedItem } = this.state;
 
     return (
-      <Row
-        left={<StarshipList onItemSelected={this.onItemSelected} />}
-        right={<StarshipDetails itemId={selectedItem} />}
-      />
+      <ErrorBoundry>
+        <Row
+          left={<StarshipList onItemSelected={this.onItemSelected} />}
+          right={<StarshipDetails itemId={selectedItem} />}
+        />
+      </ErrorBoundry>
     );
   }
 }

@@ -1,10 +1,11 @@
 import React from "react";
 import { PersonDetails, PersonList } from "../sw-components";
 import Row from "../row";
+import ErrorBoundry from "../error-boundry/error-boundry";
 
 class PeoplePage extends React.Component {
   state = {
-    selectedItem: null,
+    selectedItem: 11,
   };
 
   onItemSelected = (selectedItem) => {
@@ -17,10 +18,12 @@ class PeoplePage extends React.Component {
     const { selectedItem } = this.state;
 
     return (
-      <Row
-        left={<PersonList onItemSelected={this.onItemSelected} />}
-        right={<PersonDetails itemId={selectedItem} />}
-      />
+      <ErrorBoundry>
+        <Row
+          left={<PersonList onItemSelected={this.onItemSelected} />}
+          right={<PersonDetails itemId={selectedItem} />}
+        />
+      </ErrorBoundry>
     );
   }
 }

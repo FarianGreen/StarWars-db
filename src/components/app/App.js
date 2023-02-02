@@ -8,6 +8,8 @@ import { SwapiServiceProvider } from "../sw-components/swapi-service-context";
 import PeoplePage from "../pages/people-page";
 import PlanetsPage from "../pages/planets-page";
 import StarshipsPage from "../pages/starships-page";
+import ErrorBoundry from "../error-boundry/error-boundry";
+import ErrorButton from "../error-button/error-button";
 
 class App extends React.Component {
   swapiService = new SwapiService();
@@ -27,13 +29,16 @@ class App extends React.Component {
 
     return (
       <div className="App">
-        <SwapiServiceProvider value={this.swapiService}>
-          <Header />
-          <RandomPlanet />
-          <PeoplePage />
-          <PlanetsPage />
-          <StarshipsPage />
-        </SwapiServiceProvider>
+        <ErrorBoundry>
+          <SwapiServiceProvider value={this.swapiService}>
+            <Header />
+            <RandomPlanet />
+            <PeoplePage />
+            <PlanetsPage />
+            <StarshipsPage />
+            <ErrorButton/>
+          </SwapiServiceProvider>
+        </ErrorBoundry>
       </div>
     );
   }
