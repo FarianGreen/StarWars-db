@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/sw-db/static/css/main.85ee575a.css",
+    "main.js": "/sw-db/static/js/main.d1a163b7.js",
+    "index.html": "/sw-db/index.html",
+    "main.85ee575a.css.map": "/sw-db/static/css/main.85ee575a.css.map",
+    "main.d1a163b7.js.map": "/sw-db/static/js/main.d1a163b7.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.85ee575a.css",
+    "static/js/main.d1a163b7.js"
+  ]
+}
