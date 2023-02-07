@@ -10,6 +10,8 @@ import PlanetsPage from "../pages/planets-page";
 import StarshipsPage from "../pages/starships-page";
 import ErrorBoundry from "../error-boundry/error-boundry";
 import ErrorButton from "../error-button/error-button";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import StartPage from "../pages/start-page";
 
 class App extends React.Component {
   swapiService = new SwapiService();
@@ -31,12 +33,17 @@ class App extends React.Component {
       <div className="App">
         <ErrorBoundry>
           <SwapiServiceProvider value={this.swapiService}>
-            <Header />
-            <RandomPlanet />
-            <PeoplePage />
-            <PlanetsPage />
-            <StarshipsPage />
-            <ErrorButton/>
+            <Router>
+              <Header />
+              <RandomPlanet />
+              <Routes>
+                <Route path="/" element={<StartPage />} />
+                <Route path="people" element={<PeoplePage />} />
+                <Route path="planets" element={<PlanetsPage />} />
+                <Route path="starships" element={<StarshipsPage />} />
+              </Routes>
+            </Router>
+            <ErrorButton />
           </SwapiServiceProvider>
         </ErrorBoundry>
       </div>
