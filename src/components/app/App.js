@@ -37,7 +37,7 @@ class App extends React.Component {
               <Header />
               <RandomPlanet />
               <Routes>
-                <Route path="/" exact element={<StartPage />} />
+                <Route path="/" element={<StartPage />} exact/>
                 <Route path="people" element={<PeoplePage />} />
                 <Route path="planets" element={<PlanetsPage />} />
                 <Route path="starships" element={<StarshipsPage />} />
